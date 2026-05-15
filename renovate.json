@@ -1,26 +1,47 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", "schedule:weekly"],
+  "extends": ["config:recommended", ":dependencyDashboard"],
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": true,
+    "schedule": ["at any time"]
+  },
+  "osvVulnerabilityAlerts": true,
+  "platformAutomerge": true,
+  "pinDigests": true,
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch", "minor"],
-      "matchDepTypes": ["devDependencies"],
-      "groupName": "devDeps weekly",
-      "automerge": true
+      "matchUpdateTypes": ["patch"],
+      "matchDepTypes": ["devDependencies", "dependencies"],
+      "groupName": "patches",
+      "automerge": true,
+      "platformAutomerge": true
     },
     {
-      "matchUpdateTypes": ["patch"],
-      "matchDepTypes": ["dependencies"],
-      "groupName": "deps patches weekly",
+      "matchUpdateTypes": ["minor"],
+      "matchDepTypes": ["devDependencies"],
+      "groupName": "dev minor",
       "automerge": true
     },
     {
       "matchUpdateTypes": ["minor"],
       "matchDepTypes": ["dependencies"],
-      "groupName": "deps minor weekly",
+      "groupName": "prod minor",
       "automerge": false
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions",
+      "automerge": true,
+      "pinDigests": true
     }
   ],
-  "prConcurrentLimit": 3,
-  "prHourlyLimit": 0
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 0,
+  "rebaseWhen": "conflicted",
+  "labels": ["renovate"]
 }
