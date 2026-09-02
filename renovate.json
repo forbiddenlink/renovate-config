@@ -9,6 +9,9 @@
   "osvVulnerabilityAlerts": true,
   "platformAutomerge": true,
   "pinDigests": true,
+  "lockFileMaintenance": {
+    "enabled": false
+  },
   "packageRules": [
     {
       "matchUpdateTypes": ["patch"],
