@@ -1,10 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:best-practices", ":dependencyDashboard"],
+  "minimumReleaseAge": "3 days",
   "vulnerabilityAlerts": {
     "labels": ["security"],
     "automerge": true,
-    "schedule": ["at any time"]
+    "schedule": ["at any time"],
+    "minimumReleaseAge": null
   },
   "osvVulnerabilityAlerts": true,
   "platformAutomerge": true,
