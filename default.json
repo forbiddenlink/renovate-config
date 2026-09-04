@@ -1,11 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices", ":dependencyDashboard"],
+  "extends": [
+    "config:best-practices",
+    ":dependencyDashboard"
+  ],
   "minimumReleaseAge": "3 days",
   "vulnerabilityAlerts": {
-    "labels": ["security"],
+    "labels": [
+      "security"
+    ],
     "automerge": true,
-    "schedule": ["at any time"],
+    "schedule": [
+      "at any time"
+    ],
     "minimumReleaseAge": null
   },
   "osvVulnerabilityAlerts": true,
@@ -16,37 +23,67 @@
   },
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch"],
-      "matchDepTypes": ["devDependencies", "dependencies"],
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "matchDepTypes": [
+        "devDependencies",
+        "dependencies"
+      ],
       "groupName": "patches",
       "automerge": true,
       "platformAutomerge": true
     },
     {
-      "matchUpdateTypes": ["minor"],
-      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "matchDepTypes": [
+        "devDependencies"
+      ],
       "groupName": "dev minor",
       "automerge": true
     },
     {
-      "matchUpdateTypes": ["minor"],
-      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "matchDepTypes": [
+        "dependencies"
+      ],
       "groupName": "prod minor",
       "automerge": false
     },
     {
-      "matchUpdateTypes": ["major"],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "dependencyDashboardApproval": true
     },
     {
-      "matchManagers": ["github-actions"],
+      "matchManagers": [
+        "github-actions"
+      ],
       "groupName": "github actions",
       "automerge": true,
       "pinDigests": true
+    },
+    {
+      "description": "Identity, payment and lint-schema packages never auto-merge, and never ride inside a group. The rules above auto-merge every patch (dependencies included) and every devDependency minor, which is the right default for the long tail but wrong for these three. groupName is nulled deliberately: better-auth 1.6.30 -> 1.7.1 auto-merged on green because it was folded into a grouped patch-and-minor PR, so the bump was never looked at on its own - automerge:false alone is ambiguous for a package sitting inside an auto-merging group, and ungrouping is what actually makes this rule bite. 1.7 queries the account model on a new issuer column that did not exist, so every Microsoft sign-in callback returned 500 for two days; nothing in CI exercises a real OAuth callback and sessions last seven days, so it stayed hidden. @biomejs/biome is schema-version-coupled - a bump needs a paired 'biome migrate' that an auto-merge cannot run, and a biome minor once broke the Lint gate on main for exactly that reason. stripe follows the same principle: identity and money bumps wait for a human who reads the changelog.",
+      "matchPackageNames": [
+        "better-auth",
+        "stripe",
+        "@biomejs/biome"
+      ],
+      "groupName": null,
+      "automerge": false,
+      "platformAutomerge": false
     }
   ],
   "prConcurrentLimit": 5,
   "prHourlyLimit": 0,
   "rebaseWhen": "conflicted",
-  "labels": ["renovate"]
+  "labels": [
+    "renovate"
+  ]
 }
