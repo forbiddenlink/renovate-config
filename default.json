@@ -80,10 +80,13 @@
       "platformAutomerge": false
     }
   ],
-  "prConcurrentLimit": 5,
-  "prHourlyLimit": 0,
+  "prConcurrentLimit": 3,
+  "prHourlyLimit": 2,
   "rebaseWhen": "conflicted",
   "labels": [
     "renovate"
+  ],
+  "schedule": [
+    "before 5am on monday"
   ]
 }
