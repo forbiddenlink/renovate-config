@@ -4,6 +4,9 @@
     "config:best-practices",
     ":dependencyDashboard"
   ],
+  "ignorePresets": [
+    "replacements:framer-motion-to-motion"
+  ],
   "minimumReleaseAge": "3 days",
   "vulnerabilityAlerts": {
     "labels": [
