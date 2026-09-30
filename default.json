@@ -92,6 +92,15 @@
       "groupName": null,
       "automerge": false,
       "platformAutomerge": false
+    },
+    {
+      "description": "Renovate never edits package-manager override entries (pnpm.overrides, overrides, pnpm-workspace overrides). Those are per-major security floors maintained by hand (transitive-cve-override). Renovate reads a key like brace-expansion@1 as a dependency and proposed cross-major security bumps such as brace-expansion@1 to v5, which removes the default export minimatch 3 needs (crc-ready5-app#207: expand is not a function). allowedVersions cannot fix this for vulnerability PRs, because Renovate appends its generated vulnerability rule (allowedVersions set to the fixed version) after every user packageRule, so the user allowedVersions is overridden. enabled:false survives, because the generated rule sets no enabled flag unless vulnerabilityAlerts.enabled is configured, and it is not here.",
+      "matchDepTypes": [
+        "pnpm.overrides",
+        "overrides",
+        "pnpm-workspace.overrides"
+      ],
+      "enabled": false
     }
   ],
   "prConcurrentLimit": 3,
