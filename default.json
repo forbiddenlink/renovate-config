@@ -33,9 +33,10 @@
         "devDependencies",
         "dependencies"
       ],
-      "groupName": "patches",
+      "groupName": "non-major (automerge)",
       "automerge": true,
-      "platformAutomerge": true
+      "platformAutomerge": true,
+      "groupSlug": "non-major-automerge"
     },
     {
       "matchUpdateTypes": [
@@ -44,8 +45,9 @@
       "matchDepTypes": [
         "devDependencies"
       ],
-      "groupName": "dev minor",
-      "automerge": true
+      "groupName": "non-major (automerge)",
+      "automerge": true,
+      "groupSlug": "non-major-automerge"
     },
     {
       "matchUpdateTypes": [
