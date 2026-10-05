@@ -2,8 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:best-practices",
-    ":dependencyDashboard",
-    "group:allNonMajor"
+    ":dependencyDashboard"
   ],
   "ignorePresets": [
     "replacements:framer-motion-to-motion"
@@ -27,13 +26,38 @@
   },
   "packageRules": [
     {
-      "description": "One PR per repo per week for every minor and patch update (group:allNonMajor supplies the groupName). Automerges on green checks. Majors stay separate, unautomerged, and behind dashboard approval. Pins, digests and github-actions have their own rules below.",
       "matchUpdateTypes": [
-        "minor",
         "patch"
       ],
+      "matchDepTypes": [
+        "devDependencies",
+        "dependencies"
+      ],
+      "groupName": "non-major (automerge)",
       "automerge": true,
-      "platformAutomerge": true
+      "platformAutomerge": true,
+      "groupSlug": "non-major-automerge"
+    },
+    {
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "groupName": "non-major (automerge)",
+      "automerge": true,
+      "groupSlug": "non-major-automerge"
+    },
+    {
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "groupName": "prod minor",
+      "automerge": false
     },
     {
       "matchUpdateTypes": [
