@@ -117,6 +117,26 @@
         "pnpm-workspace.overrides"
       ],
       "enabled": false
+    },
+    {
+      "description": "Actively developed repos keep a weekly cadence; every other repo takes the monthly top-level schedule. Busy = repos whose own (non-bot) CI spend passed $5 in October 2026, from the GitHub usage export. Edit this list as projects become active or go quiet. Security updates are unaffected: Renovate appends its vulnerability rules after these, and vulnerabilityAlerts runs at any time.",
+      "matchRepositories": [
+        "forbiddenlink/finance-quest",
+        "forbiddenlink/portfolio-pro",
+        "forbiddenlink/kindred",
+        "forbiddenlink/goodshape",
+        "forbiddenlink/explainthiscode",
+        "forbiddenlink/automadocs",
+        "forbiddenlink/hire-ready",
+        "forbiddenlink/dev-assistant-pro",
+        "forbiddenlink/myaqualog",
+        "forbiddenlink/scripture-lens",
+        "forbiddenlink/testimoniq",
+        "forbiddenlink/ucp-monitor"
+      ],
+      "schedule": [
+        "before 5am on monday"
+      ]
     }
   ],
   "prConcurrentLimit": 3,
