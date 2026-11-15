@@ -48,8 +48,10 @@ are maintained by hand. Renovate is a complement to that work, not a replacement
 
 ## What It Does
 
-- Groups all non-major updates into one PR per week
+- Runs on a monthly schedule: `before 5am on the first day of the month` (`schedule` in `default.json`). Actively developed repos listed under `matchRepositories` in `default.json` get a weekly schedule instead (`before 5am on monday`); edit that list as projects become active or go quiet
+- Groups non-major updates, so a repo gets one "non-major (automerge)" PR per scheduled run rather than one PR per package
+- Waits 3 days after a release before proposing it (`minimumReleaseAge`)
 - Auto-merges patches and trusted minor updates; prod minors and majors need a human
 - Majors require approval via the Dependency Dashboard
 - Pins GitHub Action digests
-- Acts on vulnerability alerts immediately, including OSV
+- Acts on vulnerability alerts immediately, including OSV, at any time of day and with no release-age wait; the schedule above does not apply to security updates
