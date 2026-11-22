@@ -7,7 +7,7 @@
   "ignorePresets": [
     "replacements:framer-motion-to-motion"
   ],
-  "minimumReleaseAge": "3 days",
+  "minimumReleaseAge": "7 days",
   "vulnerabilityAlerts": {
     "labels": [
       "security"
@@ -74,7 +74,7 @@
       "pinDigests": true
     },
     {
-      "description": "A pin or a digest re-pin changes no code: it locks an already-resolved version to an exact reference. Without this rule such a PR clears the 3-day age gate and then sits open forever, because the automerge rules above reach only the github-actions manager and npm patch / devDependency minor updates. img-zen#33 (a docker digest) and lumira#98 (pin dependencies) each stalled that way. The identity, payment and lint-schema rule below still wins, because later rules override earlier ones. automerge alone was not enough: the top-level minimumReleaseAge still applied, so renovate/stability-days stayed pending forever and platformAutomerge could never fire. lumira#98 sat that way with every other check green. An age gate is meaningless for a pin, which resolves to a version that already shipped.",
+      "description": "A pin or a digest re-pin changes no code: it locks an already-resolved version to an exact reference. Without this rule such a PR clears the 7-day age gate and then sits open forever, because the automerge rules above reach only the github-actions manager and npm patch / devDependency minor updates. img-zen#33 (a docker digest) and lumira#98 (pin dependencies) each stalled that way. The identity, payment and lint-schema rule below still wins, because later rules override earlier ones. automerge alone was not enough: the top-level minimumReleaseAge still applied, so renovate/stability-days stayed pending forever and platformAutomerge could never fire. lumira#98 sat that way with every other check green. An age gate is meaningless for a pin, which resolves to a version that already shipped.",
       "matchUpdateTypes": [
         "pin",
         "pinDigest",
