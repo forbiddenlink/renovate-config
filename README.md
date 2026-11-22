@@ -52,7 +52,7 @@ All of the following is defined in `default.json`.
 
 - Runs on a monthly schedule: `before 5am on the first day of the month` (top-level `schedule`). Repos listed under `matchRepositories` get a weekly schedule instead (`before 5am on monday`); edit that list as projects become active or go quiet
 - Groups non-major updates, so a repo gets one "non-major (automerge)" PR per scheduled run rather than one PR per package
-- Waits 3 days after a release before proposing it (`minimumReleaseAge`), except for pins and digest re-pins, which skip the age gate
+- Waits 7 days after a release before proposing it (`minimumReleaseAge`), except for pins and digest re-pins, which skip the age gate
 - Auto-merges patch updates, dev-dependency minor updates, GitHub Action updates, package-manager minor and patch updates, and pin or digest updates. Production-dependency minors are grouped as "prod minor" and need a human
 - Never auto-merges `better-auth`, `stripe`, or `@biomejs/biome`
 - Requires approval through the Dependency Dashboard for major updates
