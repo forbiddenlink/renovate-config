@@ -74,6 +74,13 @@
       "pinDigests": true
     },
     {
+      "description": "config:best-practices pulls in security:minimumReleaseAgeNpm, a packageRule that pins npm to a 3-day age gate. A packageRule beats the top-level minimumReleaseAge, so the 7-day value above never reached npm: Renovate proposed versions 3 days old, and pnpm's own 7-day minimumReleaseAge then refused them, failing renovate/artifacts on every grouped PR (myaqualog#339, knip 6.48.0). This rule restores 7 days for npm. It sits before the pin/digest rule so that rule's null still wins.",
+      "matchDatasources": [
+        "npm"
+      ],
+      "minimumReleaseAge": "7 days"
+    },
+    {
       "description": "A pin or a digest re-pin changes no code: it locks an already-resolved version to an exact reference. Without this rule such a PR clears the 7-day age gate and then sits open forever, because the automerge rules above reach only the github-actions manager and npm patch / devDependency minor updates. img-zen#33 (a docker digest) and lumira#98 (pin dependencies) each stalled that way. The identity, payment and lint-schema rule below still wins, because later rules override earlier ones. automerge alone was not enough: the top-level minimumReleaseAge still applied, so renovate/stability-days stayed pending forever and platformAutomerge could never fire. lumira#98 sat that way with every other check green. An age gate is meaningless for a pin, which resolves to a version that already shipped.",
       "matchUpdateTypes": [
         "pin",
